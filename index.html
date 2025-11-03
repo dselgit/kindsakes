@@ -3,195 +3,129 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kindsakes — Gift kind words worth keeping</title>
-  <meta name="description" content="Give and keep notes of kindness. A simple, beautiful place for messages that matter.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; }
-  </style>
+  <link rel="stylesheet" href="/assets/brand.css">
+  <style>html{scroll-behavior:smooth}</style>
+
+<title>Kindsakes — gift kind words worth keeping</title>
+<meta name="description" content="Send and keep the notes that matter — beautiful, private, lasting.">
 </head>
 <body class="bg-white text-slate-900">
-  <!-- Header -->
-  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex h-16 items-center justify-between">
-        <a href="#home" class="flex items-center gap-2 font-semibold tracking-tight">
-          <span class="inline-block rounded-xl bg-slate-900 text-white w-8 h-8 grid place-items-center text-sm">K</span>
-          <span>Kindsakes</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="#how" class="hover:text-slate-900 text-slate-600">How it works</a>
-          <a href="#why" class="hover:text-slate-900 text-slate-600">Why it matters</a>
-          <a href="#examples" class="hover:text-slate-900 text-slate-600">Examples</a>
-          <a href="#submit" class="px-3 py-2 rounded-xl bg-slate-900 text-white hover:opacity-90">Send a note</a>
-        </nav>
-        <button id="menuBtn" class="md:hidden p-2 rounded-lg border border-slate-300" aria-label="Open menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
+
+<header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+  <div class="container">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-2 font-semibold tracking-tight">
+        <img src="/assets/logo.svg" alt="Kindsakes" class="h-8">
+      </a>
+      <nav class="hidden md:flex items-center gap-1 text-sm"><a href="/index.html" class="px-3 py-2 rounded-xl bg-slate-900 text-white">Home</a>
+<a href="/how.html" class="px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900">How it works</a>
+<a href="/examples.html" class="px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900">Examples</a>
+<a href="/about.html" class="px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900">About</a>
+<a href="/submit.html" class="px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900">Send a note</a></nav>
+      <button id="menuBtn" class="md:hidden p-2 rounded-lg border border-slate-300" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileNav" class="md:hidden hidden border-t border-slate-200 bg-white">
+    <div class="container py-3 grid gap-2 text-sm">
+      <a href="/index.html" class="py-2">Home</a>
+      <a href="/how.html" class="py-2">How it works</a>
+      <a href="/examples.html" class="py-2">Examples</a>
+      <a href="/about.html" class="py-2">About</a>
+      <a href="/submit.html" class="py-2 rounded-lg bg-slate-900 text-white text-center">Send a note</a>
+    </div>
+  </div>
+</header>
+
+<section class="pt-20 pb-16">
+  <div class="container grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Gift kind words <span class="text-slate-500">worth keeping</span></h1>
+      <p class="mt-5 text-lg text-slate-600 max-w-prose">Kindsakes helps you give messages that feel like gifts — and keeps them in one private, beautiful place.</p>
+      <div class="mt-8 flex items-center gap-3">
+        <a href="/submit.html" class="px-5 py-3 rounded-xl bg-slate-900 text-white hover:opacity-90">Send a note</a>
+        <a href="/how.html" class="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-50">How it works</a>
+      </div>
+      <div class="mt-6 text-xs text-slate-500">No app to install • Works on any phone</div>
+    </div>
+    <div class="relative">
+      <div class="rounded-3xl border border-slate-200 shadow-soft overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="Kind notes" class="w-full h-[360px] object-cover">
+      </div>
+      <div class="absolute -bottom-6 -left-6 bg-white border border-slate-200 rounded-2xl shadow p-4 w-64">
+        <p class="text-sm">“Your mentorship changed everything. I carry your words with me.”</p>
+        <div class="mt-3 text-xs text-slate-500">— Jamie to Priya</div>
       </div>
     </div>
-    <!-- Mobile menu -->
-    <div id="mobileNav" class="md:hidden hidden border-t border-slate-200 bg-white">
-      <div class="max-w-6xl mx-auto px-4 py-3 grid gap-2 text-sm">
-        <a href="#how" class="py-2">How it works</a>
-        <a href="#why" class="py-2">Why it matters</a>
-        <a href="#examples" class="py-2">Examples</a>
-        <a href="#submit" class="py-2 rounded-lg bg-slate-900 text-white text-center">Send a note</a>
+  </div>
+</section>
+
+<section class="py-16 border-y border-slate-200">
+  <div class="container grid md:grid-cols-3 gap-6">
+    <div class="card">
+      <div class="text-sm font-semibold text-slate-500">For senders</div>
+      <h3 class="mt-1 font-semibold">Make it feel like a gift</h3>
+      <p class="mt-2 text-slate-600 text-sm">A simple flow that helps you say what you mean — celebrating the giver as well as the receiver.</p>
+    </div>
+    <div class="card">
+      <div class="text-sm font-semibold text-slate-500">For recipients</div>
+      <h3 class="mt-1 font-semibold">Private by default</h3>
+      <p class="mt-2 text-slate-600 text-sm">Notes arrive via a private link and live in a personal keepsake page.</p>
+    </div>
+    <div class="card">
+      <div class="text-sm font-semibold text-slate-500">For everyone</div>
+      <h3 class="mt-1 font-semibold">Lasting, not fleeting</h3>
+      <p class="mt-2 text-slate-600 text-sm">Words that matter shouldn’t get lost in feeds. We keep them easy to revisit.</p>
+    </div>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="container grid md:grid-cols-2 gap-10 items-center">
+    <div class="order-2 md:order-1">
+      <div class="rounded-3xl border border-slate-200 shadow-soft overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop" alt="Keepsakes" class="w-full h-[340px] object-cover">
       </div>
     </div>
-  </header>
+    <div class="order-1 md:order-2">
+      <h2 class="text-3xl font-bold tracking-tight">Built for real moments</h2>
+      <ul class="mt-6 space-y-3 text-slate-700">
+        <li class="flex gap-3"><span class="mt-1 inline-block w-2 h-2 rounded-full bg-slate-900"></span> Milestones, gratitude, encouragement, and “just because.”</li>
+        <li class="flex gap-3"><span class="mt-1 inline-block w-2 h-2 rounded-full bg-slate-900"></span> Works beautifully on mobile and desktop.</li>
+        <li class="flex gap-3"><span class="mt-1 inline-block w-2 h-2 rounded-full bg-slate-900"></span> Email notifications when new notes arrive (coming in the app).</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section id="home" class="relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-16">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Gift kind words <span class="text-slate-500">worth keeping</span>
-          </h1>
-          <p class="mt-5 text-lg text-slate-600 max-w-prose">
-            Kindsakes is a gentle way to send, receive, and keep the notes that matter —
-            birthdays, milestones, or just-because moments. Beautiful. Private. Lasting.
-          </p>
-          <div class="mt-8 flex items-center gap-3">
-            <a href="#submit" class="px-5 py-3 rounded-xl bg-slate-900 text-white hover:opacity-90">Send a note</a>
-            <a href="#how" class="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-50">See how it works</a>
-          </div>
-          <div class="mt-6 text-xs text-slate-500">No app to install • Works on any phone</div>
-        </div>
-        <div class="relative">
-          <div class="rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop" alt="Kind notes" class="w-full h-[360px] object-cover">
-          </div>
-          <div class="absolute -bottom-6 -left-6 bg-white border border-slate-200 rounded-2xl shadow p-4 w-56">
-            <p class="text-sm">“Your teaching changed my year. Thank you for believing in me.”</p>
-            <div class="mt-3 text-xs text-slate-500">— Alex to Ms. Rivera</div>
-          </div>
-        </div>
+<footer class="py-12 border-t border-slate-200 mt-20">
+  <div class="container">
+    <div class="grid md:grid-cols-3 gap-6 items-center">
+      <div class="text-sm text-slate-600">© <span id="year"></span> Kindsakes</div>
+      <div class="flex gap-6 justify-center text-sm">
+        <a href="/how.html" class="text-slate-600 hover:text-slate-900">How it works</a>
+        <a href="/about.html" class="text-slate-600 hover:text-slate-900">About</a>
+        <a href="/privacy.html" class="text-slate-600 hover:text-slate-900">Privacy</a>
+      </div>
+      <div class="text-right">
+        <a href="/login.html" class="text-sm text-slate-600 hover:text-slate-900">Sign in</a>
       </div>
     </div>
-  </section>
+  </div>
+</footer>
+<script>
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('mobileNav');
+  btn && btn.addEventListener('click', () => nav.classList.toggle('hidden'));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
-  <!-- How it works -->
-  <section id="how" class="py-16 border-t border-slate-200">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl font-bold tracking-tight">How it works</h2>
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-3xl border border-slate-200">
-          <div class="text-sm font-semibold text-slate-500">Step 1</div>
-          <h3 class="mt-1 font-semibold">Write your note</h3>
-          <p class="mt-2 text-slate-600 text-sm">Say the thing you mean—short and heartfelt. Add a photo if you like.</p>
-        </div>
-        <div class="p-6 rounded-3xl border border-slate-200">
-          <div class="text-sm font-semibold text-slate-500">Step 2</div>
-          <h3 class="mt-1 font-semibold">We deliver it</h3>
-          <p class="mt-2 text-slate-600 text-sm">Your recipient gets a private link in their email or text—no account required.</p>
-        </div>
-        <div class="p-6 rounded-3xl border border-slate-200">
-          <div class="text-sm font-semibold text-slate-500">Step 3</div>
-          <h3 class="mt-1 font-semibold">It’s kept safe</h3>
-          <p class="mt-2 text-slate-600 text-sm">All your sent and received notes live in one place, easy to revisit anytime.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why it matters -->
-  <section id="why" class="py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div class="order-2 md:order-1">
-          <div class="rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1485970247670-34e84f1f1a9c?q=80&w=1600&auto=format&fit=crop" alt="Keepsakes" class="w-full h-[340px] object-cover">
-          </div>
-        </div>
-        <div class="order-1 md:order-2">
-          <h2 class="text-3xl font-bold tracking-tight">Why it matters</h2>
-          <ul class="mt-6 space-y-3 text-slate-700">
-            <li class="flex gap-3"><span class="mt-1 inline-block w-2 h-2 rounded-full bg-slate-900"></span> Words outlast moments. Make them easy to keep.</li>
-            <li class="flex gap-3"><span class="mt-1 inline-block w-2 h-2 rounded-full bg-slate-900"></span> Private by default, shareable when you choose.</li>
-            <li class="flex gap-3"><span class="mt-1 inline-block w-2 h-2 rounded-full bg-slate-900"></span> Designed to feel like a gift, not an app.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Examples -->
-  <section id="examples" class="py-16 border-y border-slate-200">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl font-bold tracking-tight">A few ways people use Kindsakes</h2>
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-3xl border border-slate-200">
-          <h3 class="font-semibold">Milestone bundles</h3>
-          <p class="mt-2 text-slate-600 text-sm">Collect 10 notes for a birthday, graduation, or first day as a manager.</p>
-        </div>
-        <div class="p-6 rounded-3xl border border-slate-200">
-          <h3 class="font-semibold">Everyday encouragement</h3>
-          <p class="mt-2 text-slate-600 text-sm">Send a quick “you’ve got this”—tiny notes add up over time.</p>
-        </div>
-        <div class="p-6 rounded-3xl border border-slate-200">
-          <h3 class="font-semibold">Thank-a-teacher</h3>
-          <p class="mt-2 text-slate-600 text-sm">Invite a class to write a few lines that a teacher can revisit forever.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Submit / CTA -->
-  <section id="submit" class="py-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="text-3xl font-bold tracking-tight">Send your first note</h2>
-      <p class="mt-3 text-slate-600">This is a demo form. On the real app we’ll deliver notes by email and give each person a private page.</p>
-      <form class="mt-8 grid md:grid-cols-2 gap-4 text-left">
-        <div>
-          <label class="block text-sm font-medium">Your name</label>
-          <input class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="Alex Sender">
-        </div>
-        <div>
-          <label class="block text-sm font-medium">Recipient email</label>
-          <input type="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="someone@example.com">
-        </div>
-        <div class="md:col-span-2">
-          <label class="block text-sm font-medium">Message</label>
-          <textarea class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 h-32" placeholder="Write a few heartfelt lines…"></textarea>
-        </div>
-        <div class="md:col-span-2">
-          <button type="button" class="w-full md:w-auto px-5 py-3 rounded-xl bg-slate-900 text-white hover:opacity-90">Preview note</button>
-        </div>
-      </form>
-      <div class="mt-4 text-xs text-slate-500">Form is non-functional on this static demo.</div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid md:grid-cols-3 gap-6 items-center">
-        <div class="text-sm text-slate-600">© <span id="year"></span> Kindsakes</div>
-        <div class="flex gap-6 justify-center text-sm">
-          <a href="#how" class="text-slate-600 hover:text-slate-900">How it works</a>
-          <a href="#why" class="text-slate-600 hover:text-slate-900">Why it matters</a>
-          <a href="#submit" class="text-slate-600 hover:text-slate-900">Send a note</a>
-        </div>
-        <div class="text-right">
-          <a href="#" class="text-sm text-slate-600 hover:text-slate-900">Privacy</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const btn = document.getElementById('menuBtn');
-    const nav = document.getElementById('mobileNav');
-    btn?.addEventListener('click', () => nav.classList.toggle('hidden'));
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
