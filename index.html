@@ -1,466 +1,197 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kindsakes (Demo)</title>
-  <meta name="description" content="Kindsakes — kind words, worth keeping." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kindsakes — Gift kind words worth keeping</title>
+  <meta name="description" content="Give and keep notes of kindness. A simple, beautiful place for messages that matter.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root{
-      --cream-50:#FAF9F6;
-      --cream-100:#F8F6F1;
-      --sage-500:#8FA77C;
-      --sage-600:#839D71;
-      --sage-200:#C4CEB4;
-      --line:#E9ECE6;
-      --line-2:#E1E5DD;
-      --text:#333333;
-      --muted:#555555;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--cream-50);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif}
-    .container{max-width:820px;margin:0 auto;padding:16px}
-    .card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-    .soft{background:var(--cream-100)}
-    .row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{appearance:none;border:0;padding:12px 18px;border-radius:14px;font-weight:600;cursor:pointer}
-    .btn-primary{background:var(--sage-500);color:#fff}
-    .btn-primary:hover{background:var(--sage-600)}
-    .btn-ghost{background:var(--cream-100)}
-    .btn-outline{background:#fff;border:1px solid var(--line-2)}
-    input,textarea,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line-2);background:#fff;outline:none}
-    input:focus,textarea:focus{box-shadow:0 0 0 3px rgba(143,167,124,.25)}
-    label .lbl{display:block;font-size:.9rem;color:var(--muted);margin:6px 0}
-    .muted{color:var(--muted)}
-    .tiny{font-size:.82rem}
-    .xs{font-size:.74rem}
-    .badge{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--cream-100);border:1px solid var(--line-2);font-size:.75rem}
-    header{position:sticky;top:0;backdrop-filter:saturate(1.2) blur(8px);background:rgba(250,249,246,.9);border-bottom:1px solid var(--line);z-index:10}
-    .brand{font-family:ui-serif, Georgia, 'Times New Roman', serif;font-size:1.25rem}
-    nav a{display:inline-block;padding:8px 12px;border-radius:10px;text-decoration:none;color:inherit}
-    nav a.active{background:var(--cream-100);}
-    .hidden{display:none !important}
-    @media(min-width:900px){ .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px} }
-    details{padding:14px 16px;border-top:1px solid var(--line)}
-    details:first-of-type{border-top:0}
-    summary{cursor:pointer;font-weight:600}
-    .space-y > * + *{margin-top:12px}
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; }
   </style>
 </head>
-<body>
-  <header>
-    <div class="container row" style="align-items:center;justify-content:space-between;padding:10px 16px">
-      <div>
-        <div class="brand">Kindsakes</div>
-        <div class="xs muted">kind words, worth keeping.</div>
+<body class="bg-white text-slate-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#home" class="flex items-center gap-2 font-semibold tracking-tight">
+          <span class="inline-block rounded-xl bg-slate-900 text-white w-8 h-8 grid place-items-center text-sm">K</span>
+          <span>Kindsakes</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#how" class="hover:text-slate-900 text-slate-600">How it works</a>
+          <a href="#why" class="hover:text-slate-900 text-slate-600">Why it matters</a>
+          <a href="#examples" class="hover:text-slate-900 text-slate-600">Examples</a>
+          <a href="#submit" class="px-3 py-2 rounded-xl bg-slate-900 text-white hover:opacity-90">Send a note</a>
+        </nav>
+        <button id="menuBtn" class="md:hidden p-2 rounded-lg border border-slate-300" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
       </div>
-      <nav id="nav">
-        <a href="#send" data-route="send" class="active">Send</a>
-        <a href="#login" data-route="login">Login</a>
-        <a href="#keepsakes" data-route="keepsakes">Keepsakes</a>
-        <a href="#admin" data-route="admin">Admin</a>
-      </nav>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileNav" class="md:hidden hidden border-t border-slate-200 bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-3 grid gap-2 text-sm">
+        <a href="#how" class="py-2">How it works</a>
+        <a href="#why" class="py-2">Why it matters</a>
+        <a href="#examples" class="py-2">Examples</a>
+        <a href="#submit" class="py-2 rounded-lg bg-slate-900 text-white text-center">Send a note</a>
+      </div>
     </div>
   </header>
 
-  <main class="container" style="padding-top:18px">
-    <!-- SEND PAGE -->
-    <section id="page-send" class="space-y">
-      <div class="card soft" style="padding:18px 16px">
-        <h1 style="margin:0 0 6px;font-family:ui-serif, Georgia, 'Times New Roman', serif">Send a keepsake</h1>
-        <p class="muted" id="intro-copy">Write a small note to lift someone’s day. They’ll receive it privately and can return to it whenever they need a reminder of your kindness.</p>
-
-        <div class="space-y">
-          <label><span class="lbl">Your name or email (optional)</span>
-            <input id="sender" placeholder="you@example.com" />
-          </label>
-          <label><span class="lbl">Recipient’s email *</span>
-            <input id="recipient" placeholder="friend@example.com" />
-          </label>
-          <label><span class="lbl">Your message</span>
-            <div style="position:relative">
-              <textarea id="message" rows="6" placeholder="write as much as you like…"></textarea>
-              <button id="micBtn" class="btn btn-outline" style="position:absolute;right:8px;bottom:8px;padding:6px 10px">dictate</button>
-            </div>
-          </label>
-
-          <div class="row" style="align-items:flex-start;justify-content:space-between">
-            <div class="space-y">
-              <label class="row" style="align-items:center;gap:8px">
-                <input type="checkbox" id="anon" style="width:auto" />
-                <span class="tiny">Send anonymously</span>
-              </label>
-              <label class="row" style="align-items:center;gap:8px">
-                <input type="checkbox" id="perm" style="width:auto" />
-                <span class="tiny">I confirm that the recipient will be happy to receive this note</span>
-              </label>
-            </div>
-            <button id="sendBtn" class="btn btn-primary">send a keepsake</button>
-          </div>
-
-          <div id="sendError" class="tiny" style="color:#C94F4F"></div>
-          <p class="xs muted">Kindsakes never shares addresses or messages publicly. Every keepsake is private by default.</p>
-        </div>
-      </div>
-
-      <section class="card" style="margin-top:14px">
-        <div id="faq" class="space-y" style="padding:0">
-          <!-- FAQ will render here -->
-        </div>
-      </section>
-    </section>
-
-    <!-- SUCCESS -->
-    <section id="page-success" class="hidden">
-      <div class="card" style="padding:28px;text-align:center">
-        <h2 style="margin:0 0 8px;font-family:ui-serif, Georgia, 'Times New Roman', serif">Thank you for sharing some warmth.</h2>
-        <p class="muted">Your keepsake is on its way.</p>
-        <div class="row" style="justify-content:center;margin-top:10px">
-          <button class="btn btn-primary" onclick="route('send')">write another</button>
-          <button class="btn btn-ghost" onclick="copyShare()">copy link to share</button>
-        </div>
-        <div id="copied" class="xs muted" style="margin-top:6px;display:none">link copied</div>
-      </div>
-    </section>
-
-    <!-- LOGIN -->
-    <section id="page-login" class="hidden">
-      <div class="card soft" style="padding:18px 16px">
-        <h2 style="margin:0 0 6px;font-family:ui-serif, Georgia, 'Times New Roman', serif">Sign in</h2>
-        <p class="muted">Enter your email and we’ll send a private link to view keepsakes you’ve written and received. (demo: instant sign-in)</p>
-        <label><span class="lbl">Your email</span>
-          <input id="loginEmail" placeholder="you@example.com" />
-        </label>
-        <button class="btn btn-primary" style="margin-top:10px" onclick="demoLogin()">Send magic link</button>
-        <div id="loginMsg" class="tiny muted" style="margin-top:8px;display:none">Check your inbox — link sent (demo).</div>
-      </div>
-    </section>
-
-    <!-- KEEPSAKES -->
-    <section id="page-keepsakes" class="hidden">
-      <div class="row" style="align-items:baseline;justify-content:space-between">
+  <!-- Hero -->
+  <section id="home" class="relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-16">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <h2 style="margin:0 0 4px;font-family:ui-serif, Georgia, 'Times New Roman', serif">your keepsakes</h2>
-          <div class="xs muted">private to you</div>
+          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+            Gift kind words <span class="text-slate-500">worth keeping</span>
+          </h1>
+          <p class="mt-5 text-lg text-slate-600 max-w-prose">
+            Kindsakes is a gentle way to send, receive, and keep the notes that matter —
+            birthdays, milestones, or just-because moments. Beautiful. Private. Lasting.
+          </p>
+          <div class="mt-8 flex items-center gap-3">
+            <a href="#submit" class="px-5 py-3 rounded-xl bg-slate-900 text-white hover:opacity-90">Send a note</a>
+            <a href="#how" class="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-50">See how it works</a>
+          </div>
+          <div class="mt-6 text-xs text-slate-500">No app to install • Works on any phone</div>
         </div>
-        <div class="row">
-          <button class="badge" onclick="setFilter('all')">All</button>
-          <button class="badge" onclick="setFilter('pending')">Pending</button>
-          <button class="badge" onclick="setFilter('approved')">Approved</button>
-          <button class="badge" onclick="setFilter('archived')">Archived</button>
-        </div>
-      </div>
-
-      <div id="newestWrap" class="card" style="padding:16px;margin-top:12px;display:none">
-        <div class="xs muted" style="margin-bottom:6px">Newest keepsake</div>
-        <div id="newestBody" style="white-space:pre-wrap"></div>
-        <div id="newestMeta" class="tiny muted" style="margin-top:6px"></div>
-        <div class="row" style="margin-top:8px">
-          <button class="btn btn-primary" onclick="actNewest('approved')">Approve</button>
-          <button class="btn btn-ghost" onclick="actNewest('archived')">Hide</button>
-          <button class="btn btn-outline" onclick="alert('Reported (demo)')">Report</button>
-        </div>
-      </div>
-
-      <div id="list" class="grid-2" style="margin-top:12px"></div>
-    </section>
-
-    <!-- ADMIN -->
-    <section id="page-admin" class="hidden">
-      <div class="grid-2">
-        <div class="card" style="padding:16px">
-          <h3 style="margin-top:0;font-family:ui-serif, Georgia, 'Times New Roman', serif">Text & buttons</h3>
-          <div id="copyEditor" class="space-y"></div>
-        </div>
-        <div class="card" style="padding:16px">
-          <h3 style="margin-top:0;font-family:ui-serif, Georgia, 'Times New Roman', serif">FAQs</h3>
-          <div id="faqEditor" class="space-y"></div>
-          <button class="btn btn-ghost" onclick="addFaq()">+ Add entry</button>
-          <div style="margin-top:10px">
-            <button class="btn btn-primary" onclick="publish()">Publish</button>
-            <span id="saved" class="tiny muted" style="margin-left:8px;display:none">Saved</span>
+        <div class="relative">
+          <div class="rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop" alt="Kind notes" class="w-full h-[360px] object-cover">
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-white border border-slate-200 rounded-2xl shadow p-4 w-56">
+            <p class="text-sm">“Your teaching changed my year. Thank you for believing in me.”</p>
+            <div class="mt-3 text-xs text-slate-500">— Alex to Ms. Rivera</div>
           </div>
         </div>
       </div>
-      <div class="card" style="padding:0;margin-top:16px">
-        <iframe id="preview" style="width:100%;height:380px;border:0;border-radius:16px"></iframe>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer style="border-top:1px solid var(--line);margin-top:24px">
-    <div class="container tiny muted" style="text-align:center;padding:36px 16px">
-      Kindsakes — kind words, worth keeping.
-      <div style="margin-top:6px">
-        <a class="xs" href="#">about</a> • <a class="xs" href="#">privacy</a> • <a class="xs" href="#">contact</a>
+  <!-- How it works -->
+  <section id="how" class="py-16 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold tracking-tight">How it works</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-3xl border border-slate-200">
+          <div class="text-sm font-semibold text-slate-500">Step 1</div>
+          <h3 class="mt-1 font-semibold">Write your note</h3>
+          <p class="mt-2 text-slate-600 text-sm">Say the thing you mean—short and heartfelt. Add a photo if you like.</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-slate-200">
+          <div class="text-sm font-semibold text-slate-500">Step 2</div>
+          <h3 class="mt-1 font-semibold">We deliver it</h3>
+          <p class="mt-2 text-slate-600 text-sm">Your recipient gets a private link in their email or text—no account required.</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-slate-200">
+          <div class="text-sm font-semibold text-slate-500">Step 3</div>
+          <h3 class="mt-1 font-semibold">It’s kept safe</h3>
+          <p class="mt-2 text-slate-600 text-sm">All your sent and received notes live in one place, easy to revisit anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why it matters -->
+  <section id="why" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="order-2 md:order-1">
+          <div class="rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1485970247670-34e84f1f1a9c?q=80&w=1600&auto=format&fit=crop" alt="Keepsakes" class="w-full h-[340px] object-cover">
+          </div>
+        </div>
+        <div class="order-1 md:order-2">
+          <h2 class="text-3xl font-bold tracking-tight">Why it matters</h2>
+          <ul class="mt-6 space-y-3 text-slate-700">
+            <li class="flex gap-3"><span class="mt-1 inline-block w-2 h-2 rounded-full bg-slate-900"></span> Words outlast moments. Make them easy to keep.</li>
+            <li class="flex gap-3"><span class="mt-1 inline-block w-2 h-2 rounded-full bg-slate-900"></span> Private by default, shareable when you choose.</li>
+            <li class="flex gap-3"><span class="mt-1 inline-block w-2 h-2 rounded-full bg-slate-900"></span> Designed to feel like a gift, not an app.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Examples -->
+  <section id="examples" class="py-16 border-y border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold tracking-tight">A few ways people use Kindsakes</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-3xl border border-slate-200">
+          <h3 class="font-semibold">Milestone bundles</h3>
+          <p class="mt-2 text-slate-600 text-sm">Collect 10 notes for a birthday, graduation, or first day as a manager.</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-slate-200">
+          <h3 class="font-semibold">Everyday encouragement</h3>
+          <p class="mt-2 text-slate-600 text-sm">Send a quick “you’ve got this”—tiny notes add up over time.</p>
+        </div>
+        <div class="p-6 rounded-3xl border border-slate-200">
+          <h3 class="font-semibold">Thank-a-teacher</h3>
+          <p class="mt-2 text-slate-600 text-sm">Invite a class to write a few lines that a teacher can revisit forever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Submit / CTA -->
+  <section id="submit" class="py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl font-bold tracking-tight">Send your first note</h2>
+      <p class="mt-3 text-slate-600">This is a demo form. On the real app we’ll deliver notes by email and give each person a private page.</p>
+      <form class="mt-8 grid md:grid-cols-2 gap-4 text-left">
+        <div>
+          <label class="block text-sm font-medium">Your name</label>
+          <input class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="Alex Sender">
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Recipient email</label>
+          <input type="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" placeholder="someone@example.com">
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium">Message</label>
+          <textarea class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 h-32" placeholder="Write a few heartfelt lines…"></textarea>
+        </div>
+        <div class="md:col-span-2">
+          <button type="button" class="w-full md:w-auto px-5 py-3 rounded-xl bg-slate-900 text-white hover:opacity-90">Preview note</button>
+        </div>
+      </form>
+      <div class="mt-4 text-xs text-slate-500">Form is non-functional on this static demo.</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-3 gap-6 items-center">
+        <div class="text-sm text-slate-600">© <span id="year"></span> Kindsakes</div>
+        <div class="flex gap-6 justify-center text-sm">
+          <a href="#how" class="text-slate-600 hover:text-slate-900">How it works</a>
+          <a href="#why" class="text-slate-600 hover:text-slate-900">Why it matters</a>
+          <a href="#submit" class="text-slate-600 hover:text-slate-900">Send a note</a>
+        </div>
+        <div class="text-right">
+          <a href="#" class="text-sm text-slate-600 hover:text-slate-900">Privacy</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script>
-    // --- Simple router ---
-    function route(page){
-      document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));
-      document.getElementById('page-'+page).classList.remove('hidden');
-      document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('data-route')===page));
-      location.hash = page;
-      if(page==='keepsakes') renderKeeps();
-      if(page==='admin') renderAdmin();
-    }
-    window.addEventListener('hashchange', ()=>{
-      const p = location.hash.replace('#','') || 'send';
-      route(p);
-    });
-    route(location.hash.replace('#','') || 'send');
-
-    // --- Local storage helpers ---
-    const LS_NOTES = 'kindsakes_notes_v1'; // map by recipient email
-    const LS_COPY  = 'kindsakes_copy_v1';
-    const LS_FAQ   = 'kindsakes_faq_v1';
-    const DEFAULT_COPY = {
-      intro: 'Write a small note to lift someone’s day. They’ll receive it privately and can return to it whenever they need a reminder of your kindness.',
-      perm: 'I confirm that the recipient will be happy to receive this note',
-      sendBtn: 'send a keepsake',
-    };
-    const DEFAULT_FAQ=[
-      {q:'What is Kindsakes?', a:'A small, human‑made space to send kind notes — privately. Each note becomes a keepsake to revisit later.'},
-      {q:'Is my message public?', a:'No. Every keepsake is private by default. Nothing is shown publicly without both parties choosing to share (future optional feature).'},
-      {q:'Can I send anonymously?', a:'Yes. You can hide your name if you prefer.'},
-      {q:'Will you email the recipient?', a:'Only this note — never newsletters. You’ll confirm they’re happy to receive it.'},
-      {q:'How do recipients read their notes?', a:'They’ll get a private link by email. Later, they can open their Keepsakes page to revisit approved notes.'},
-    ];
-
-    function getJSON(key, fallback){ try{ return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch(e){ return fallback; } }
-    function setJSON(key, value){ localStorage.setItem(key, JSON.stringify(value)); }
-
-    // --- Render FAQ on main page ---
-    function renderFAQ(){
-      const faq = getJSON(LS_FAQ, DEFAULT_FAQ);
-      const el = document.getElementById('faq');
-      el.innerHTML = '<div class="card" style="padding:0;border:0"></div>';
-      const container = el.querySelector('.card');
-      faq.forEach((f,i)=>{
-        const d = document.createElement('details');
-        if(i===0) d.open = true;
-        const s = document.createElement('summary');
-        s.textContent = (i+1)+'. '+f.q;
-        const p = document.createElement('p');
-        p.className = 'muted';
-        p.style.margin = '6px 0 0 0';
-        p.textContent = f.a;
-        d.appendChild(s); d.appendChild(p);
-        d.className = ''; // reset class to not inherit padding
-        d.style.padding = '14px 16px';
-        d.style.borderTop = '1px solid var(--line)';
-        if(i===0) d.style.borderTop = '0';
-        container.appendChild(d);
-      });
-    }
-    renderFAQ();
-
-    // --- Copy intro text from admin settings ---
-    function applyCopy(){
-      const cfg = getJSON(LS_COPY, DEFAULT_COPY);
-      document.getElementById('intro-copy').textContent = cfg.intro || DEFAULT_COPY.intro;
-      document.querySelector('#perm ~ span.tiny')?.remove();
-      document.getElementById('perm').nextElementSibling.textContent = cfg.perm || DEFAULT_COPY.perm;
-      document.getElementById('sendBtn').textContent = cfg.sendBtn || DEFAULT_COPY.sendBtn;
-    }
-    applyCopy();
-
-    // --- Dictation (Web Speech API) ---
-    let rec, listening=false;
-    const micBtn = document.getElementById('micBtn');
-    micBtn.addEventListener('click', function(e){
-      e.preventDefault();
-      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if(!SR) return alert('Dictation not supported in this browser.');
-      if(!rec){ rec = new SR(); rec.continuous = true; rec.interimResults = true;
-        rec.onresult = (ev)=>{
-          let t=''; for(let i=ev.resultIndex;i<ev.results.length;i++){ t += ev.results[i][0].transcript; }
-          const ta = document.getElementById('message'); ta.value = (ta.value ? ta.value+' ' : '') + t.trim();
-        };
-        rec.onend = ()=>{ listening=false; micBtn.textContent='dictate'; };
-      }
-      if(listening){ rec.stop(); listening=false; micBtn.textContent='dictate'; }
-      else { try{ rec.start(); listening=true; micBtn.textContent='stop mic'; } catch(err){ alert('Microphone permission denied or busy.'); } }
-    });
-
-    // --- Send flow ---
-    document.getElementById('sendBtn').addEventListener('click', function(){
-      const sender = (document.getElementById('sender') as HTMLInputElement).value.trim();
-      const recipient = (document.getElementById('recipient') as HTMLInputElement).value.trim();
-      const message = (document.getElementById('message') as HTMLTextAreaElement).value.trim();
-      const anon = (document.getElementById('anon') as HTMLInputElement).checked;
-      const perm = (document.getElementById('perm') as HTMLInputElement).checked;
-      const errEl = document.getElementById('sendError');
-      errEl.textContent='';
-
-      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(recipient)){ errEl.textContent='We need a valid recipient email to deliver your note.'; return; }
-      if(!perm){ errEl.textContent='Please confirm the recipient will be happy to receive this note.'; return; }
-      if(!message){ errEl.textContent='Say as much or as little as you’d like, but say something.'; return; }
-
-      const map = getJSON(LS_NOTES, {});
-      const note = {
-        id: Math.random().toString(36).slice(2),
-        body: message,
-        sender: anon ? null : (sender || null),
-        recipient,
-        createdAt: Date.now(),
-        status: 'pending',
-        anonymous: !!anon,
-      };
-      map[recipient] = [note, ...(map[recipient] || [])];
-      setJSON(LS_NOTES, map);
-
-      // reset
-      (document.getElementById('sender') as HTMLInputElement).value='';
-      (document.getElementById('recipient') as HTMLInputElement).value='';
-      (document.getElementById('message') as HTMLTextAreaElement).value='';
-      (document.getElementById('anon') as HTMLInputElement).checked=false;
-      (document.getElementById('perm') as HTMLInputElement).checked=false;
-
-      route('success');
-    });
-
-    function copyShare(){
-      navigator.clipboard.writeText(location.origin + '/#send').then(()=>{
-        document.getElementById('copied').style.display='block';
-        setTimeout(()=> document.getElementById('copied').style.display='none', 1500);
-      });
-    }
-
-    // --- Login (demo) ---
-    let authedEmail = null;
-    function demoLogin(){
-      const email = (document.getElementById('loginEmail') as HTMLInputElement).value.trim();
-      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { alert('Please enter a valid email'); return; }
-      authedEmail = email;
-      document.getElementById('loginMsg').style.display='block';
-      setTimeout(()=> route('keepsakes'), 600);
-    }
-
-    // --- Keepsakes rendering ---
-    let currentFilter = 'all';
-    function setFilter(f){ currentFilter=f; renderKeeps(); }
-    function renderKeeps(){
-      if(!authedEmail){ document.getElementById('list').innerHTML='<div class="card" style="padding:16px">Please sign in first.</div>'; return; }
-      const map = getJSON(LS_NOTES, {});
-      const all = (map[authedEmail] || []).slice();
-      let view = all;
-      if(currentFilter!=='all') view = all.filter(n=>n.status===currentFilter);
-      const newest = view[0];
-      const newestWrap = document.getElementById('newestWrap');
-      if(newest){
-        newestWrap.style.display='block';
-        document.getElementById('newestBody').textContent = newest.body;
-        document.getElementById('newestMeta').textContent = (newest.anonymous ? 'Anonymous' : (newest.sender || '—')) + ' • ' + new Date(newest.createdAt).toLocaleString();
-      } else {
-        newestWrap.style.display='none';
-      }
-      const list = document.getElementById('list'); list.innerHTML='';
-      view.slice(1).forEach(n=>{
-        const item = document.createElement('div');
-        item.className = 'card'; item.style.padding='12px';
-        item.innerHTML = '<div style="white-space:pre-wrap">'+escapeHtml(n.body)+'</div>' +
-          '<div class="tiny muted" style="margin-top:6px">'+ (n.anonymous ? 'Anonymous' : (n.sender || '—')) +' • '+ new Date(n.createdAt).toLocaleDateString() +'</div>'+
-          '<div class="row" style="margin-top:8px"><button class="btn btn-primary btn-sm">Approve</button><button class="btn btn-ghost btn-sm">Hide</button><button class="btn btn-outline btn-sm">Report</button></div>';
-        const [approveBtn, hideBtn, reportBtn] = item.querySelectorAll('button');
-        approveBtn.addEventListener('click', ()=> updateNote(n.id,'approved'));
-        hideBtn.addEventListener('click', ()=> updateNote(n.id,'archived'));
-        reportBtn.addEventListener('click', ()=> alert('Reported (demo)'));
-        list.appendChild(item);
-      });
-
-      window.actNewest = function(status){
-        if(!newest) return;
-        updateNote(newest.id, status);
-      }
-    }
-    function updateNote(id, status){
-      const map = getJSON(LS_NOTES, {});
-      const arr = map[authedEmail] || [];
-      const idx = arr.findIndex(n=>n.id===id);
-      if(idx>-1){ arr[idx].status = status; map[authedEmail]=arr; setJSON(LS_NOTES, map); renderKeeps(); }
-    }
-
-    function escapeHtml(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-
-    // --- Admin ---
-    function renderAdmin(){
-      // copy editor
-      const cfg = getJSON(LS_COPY, DEFAULT_COPY);
-      const ce = document.getElementById('copyEditor'); ce.innerHTML='';
-      const entries = [
-        ['intro','Intro paragraph', cfg.intro],
-        ['perm','Permission checkbox', cfg.perm],
-        ['sendBtn','Send button text', cfg.sendBtn],
-      ];
-      entries.forEach(([key,label,val])=>{
-        const wrap = document.createElement('div');
-        wrap.innerHTML = '<label class="lbl">'+label+'</label><input data-key="'+key+'" value="'+(val||'')+'"/>';
-        ce.appendChild(wrap);
-      });
-
-      // faq editor
-      const currentFaq = getJSON(LS_FAQ, DEFAULT_FAQ);
-      const fe = document.getElementById('faqEditor'); fe.innerHTML='';
-      currentFaq.forEach((f,i)=>{
-        const wrap = document.createElement('div');
-        wrap.className='card'; wrap.style.padding='12px';
-        wrap.innerHTML = '<div class="row"><button class="btn btn-ghost" data-up="'+i+'">↑</button><button class="btn btn-ghost" data-down="'+i+'">↓</button><button class="btn btn-outline" data-del="'+i+'">delete</button></div>'+
-          '<label><span class="lbl">Question</span><input data-q="'+i+'" value="'+escapeHtml(f.q).replace(/"/g,'&quot;')+'"/></label>'+
-          '<label><span class="lbl">Answer</span><textarea rows="3" data-a="'+i+'">'+escapeHtml(f.a)+'</textarea></label>';
-        fe.appendChild(wrap);
-      });
-
-      // wire events
-      fe.querySelectorAll('[data-del]').forEach(btn=> btn.addEventListener('click', (e)=>{
-        const i = +e.target.getAttribute('data-del'); const arr = getJSON(LS_FAQ, DEFAULT_FAQ); arr.splice(i,1); setJSON(LS_FAQ, arr); renderAdmin();
-      }));
-      fe.querySelectorAll('[data-up]').forEach(btn=> btn.addEventListener('click', (e)=>{
-        const i = +e.target.getAttribute('data-up'); const arr = getJSON(LS_FAQ, DEFAULT_FAQ); if(i>0){ const [it]=arr.splice(i,1); arr.splice(i-1,0,it); setJSON(LS_FAQ, arr); renderAdmin(); }
-      }));
-      fe.querySelectorAll('[data-down]').forEach(btn=> btn.addEventListener('click', (e)=>{
-        const i = +e.target.getAttribute('data-down'); const arr = getJSON(LS_FAQ, DEFAULT_FAQ); if(i<arr.length-1){ const [it]=arr.splice(i,1); arr.splice(i+1,0,it); setJSON(LS_FAQ, arr); renderAdmin(); }
-      }));
-
-      window.addFaq = function(){ const arr = getJSON(LS_FAQ, DEFAULT_FAQ); arr.push({q:'New question', a:'Answer…'}); setJSON(LS_FAQ, arr); renderAdmin(); }
-
-      window.publish = function(){
-        const cfg = getJSON(LS_COPY, DEFAULT_COPY);
-        document.querySelectorAll('#copyEditor input').forEach(inp=>{
-          cfg[inp.getAttribute('data-key')] = inp.value;
-        });
-        setJSON(LS_COPY, cfg);
-        document.getElementById('saved').style.display='inline';
-        setTimeout(()=> document.getElementById('saved').style.display='none', 1200);
-        applyCopy(); renderFAQ(); renderPreview();
-      }
-
-      renderPreview();
-    }
-
-    function renderPreview(){
-      const cfg = getJSON(LS_COPY, DEFAULT_COPY);
-      const faq = getJSON(LS_FAQ, DEFAULT_FAQ);
-      const esc = (s)=> String(s).replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      const html = \`<!doctype html><html><head><meta charset="utf-8"/><style>
-        body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif; background:#FAF9F6; color:#333}
-        .wrap{max-width:720px;margin:16px auto;padding:16px}
-        .card{background:#F8F6F1;border:1px solid #E9ECE6;border-radius:16px;padding:16px}
-        .faq{background:#fff;border:1px solid #E9ECE6;border-radius:16px;padding:0;margin-top:12px}
-        details{padding:12px;border-top:1px solid #E9ECE6}
-        details:first-of-type{border-top:0}
-      </style></head><body>
-        <div class='wrap'>
-          <div class='card'><h1 style='font-family:serif;margin:0 0 8px'>Send a keepsake</h1><p style='color:#555'>\${esc(cfg.intro||'')}</p></div>
-          <div class='faq'>\${faq.map((f,i)=>\`<details \${i===0?'open':''}><summary>\${esc((i+1)+'. '+f.q)}</summary><p style='color:#555;margin-top:6px'>\${esc(f.a)}</p></details>\`).join('')}</div>
-        </div>
-      </body></html>\`;
-      const iframe = document.getElementById('preview');
-      iframe.srcdoc = html;
-    }
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mobileNav');
+    btn?.addEventListener('click', () => nav.classList.toggle('hidden'));
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
